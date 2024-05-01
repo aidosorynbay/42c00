@@ -5,50 +5,51 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: aorynbay <aorynbay@student.42abudhabi.ae>  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/01 16:57:06 by aorynbay          #+#    #+#             */
-/*   Updated: 2024/05/01 17:18:52 by aorynbay         ###   ########.fr       */
+/*   Created: 2024/05/01 18:15:24 by aorynbay          #+#    #+#             */
+/*   Updated: 2024/05/01 18:20:17 by aorynbay         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void	ft_print_comb(void)
+void	print_char(char c)
 {
-	char	a;
-	char	b;
-	char	c;
-	char	comma_space[];
-
-	a = 48;
-	b = 48;
-	c = 48;
-	comma_space = ", ";
-	while (c < 58 && a < 58 && b < 58)
-	{
-		c++;
-		if (c == 58)
-		{
-			b++;
-			c = 48;
-		}
-		if (b == 58)
-		{
-			a++;
-			b = 48;
-			c = 48;
-		}
-		if (a != b && a != c && b != c)
-		{
-			write(1, &a, 1);
-			write(1, &b, 1);
-			write(1, &c, 1);
-			write(1, comma_space, 1);
-		}
-	}
+	write(1, &c, 1);
 }
 
-int	main(void)
+void	print_comb(char a, char b, char c)
 {
-	ft_print_comb();
-	return (0);
+	print_char(a + '0');
+	print_char(b + '0');
+	print_char(c + '0');
+	if (a == 7 && b == 8 && c == 9)
+	{
+		return ;
+	}
+	print_char(',');
+	print_char(' ');
+}
+
+void	ft_print_comb(void)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = 0;
+	while (a <= 7)
+	{
+		b = a + 1;
+		while (b <= 8)
+		{
+			c = b + 1;
+			while (c <= 9)
+			{
+				print_comb (a, b, c);
+				c++;
+			}
+			b++;
+		}
+		a++;
+	}
 }
