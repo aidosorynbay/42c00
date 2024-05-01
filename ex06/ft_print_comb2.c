@@ -2,55 +2,57 @@
 
 void	print_char2(char c)
 {
-	write(1, &c, 1);
+    int z;
+    z = '0';
+    if (c < 10)
+    {
+        write(1, &z , 1);
+        write(1, &c, 1);
+    }
+    else
+    {
+	    write(1, &c, 1);
+    }
 }
 
-void	print_comb2(char a, char b, char c, char d)
+void	print_comb2(char ab, char cd)
 {
-	print_char2(a + '0');
-	print_char2(b + '0');
-    print_char2(' ');
-	print_char2(c + '0');
-    print_char2(d + '0');
-	if (a == 9 && b == 8 && c == 9 && d == 9)
-	{
-		return ;
-	}
-	print_char2(',');
-	print_char2(' ');
+	if (ab == cd)
+    {
+
+    }
+    else
+    {
+        print_char2(ab + '0');
+        print_char2(' ');
+        print_char2(cd + '0');
+        if (ab == 98 && cd == 99)
+        {
+            return ;
+        }
+        print_char2(',');
+        print_char2(' ');
+    }
 }
 
 void    ft_print_comb2(void)
 {
-    int a;
-    int b;
-    int c;
-    int d;
+    int ab;
+    int cd;
 
-    a = 0;
-    b = 0;
-    c = 0;
-    d = 1;
+    ab = 0;
+    cd = 1;
 
-    while (a < 10)
+
+    while (ab <= 98)
     {
-        b = 0;
-        while (b < 10)
+        cd = 0;
+        while (cd <= 99)
         {
-            c = 0;
-                while (c < 10)
-                {
-                    d = 0;
-                    while (d < 10)
-                    {
-                        print_comb2(a, b, c, d);
-                        d++;
-                    }
-                    c++;
-                }
-            b++;
+            print_comb2(ab, cd);
+            cd++;
         }
-        a++;
+        ab++;
     }
 }
 
