@@ -15,24 +15,27 @@ void	print_char2(char c)
     }
 }
 
-void	print_comb2(char ab, char cd)
+void	print_comb2(int ab, int cd)
 {
-	if (ab == cd)
-    {
 
-    }
-    else
-    {
-        print_char2(ab + '0');
-        print_char2(' ');
-        print_char2(cd + '0');
-        if (ab == 98 && cd == 99)
-        {
-            return ;
-        }
-        print_char2(',');
-        print_char2(' ');
-    }
+	char	char1;
+	char	char2;
+	char	char3;
+	char	char4;
+
+	char1 = '0' + (ab / 10);
+	char2 = '0' + (ab % 10);
+	char3 = '0' + (cd / 10);
+	char4 = '0' + (cd % 10);
+
+	write(1, &char1, 1);
+	write(1, &char2, 1);
+	write(1, " ", 1);   
+	write(1, &char3, 1);
+	write(1, &char4, 1);
+	
+	if (ab != 98)
+		write(1, ", ", 2);
 }
 
 void    ft_print_comb2(void)
@@ -46,7 +49,7 @@ void    ft_print_comb2(void)
 
     while (ab <= 98)
     {
-        cd = 0;
+        cd = ab + 1;
         while (cd <= 99)
         {
             print_comb2(ab, cd);
